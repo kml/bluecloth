@@ -1,20 +1,20 @@
 module SampleLoader
   protected
-  
+
   def sample_file(name)
     File.dirname(__FILE__) + '/samples/' + name
   end
-  
+
   def load_samples(*names, &block)
     @sections ||= Hash.new { |h, k| h[k] = [] }
     loaded_samples = []
-    
+
     for name in names
       unless File.exists?(file = sample_file(name))
-        $stderr.puts %[WARNING: no samples file for "#{name}"] 
+        $stderr.puts %[WARNING: no samples file for "#{name}"]
         next
       end
-      
+
       meta_space = true
       section = section_name = sample = nil
       linenum = 0
@@ -43,7 +43,7 @@ module SampleLoader
             # # Para plus code block
             when /^# (.*)/
               description = $1.chomp
-              
+
               unless sample
                 sample = Sample.new(description, section_name, linenum)
               else
@@ -81,12 +81,12 @@ module SampleLoader
 
   class Sample
     attr_reader :comment, :section, :line
-    
+
     def initialize(comment, section_name, line_number)
       @comment = comment
       @section = section_name
       @line = line_number
-      
+
       @input_state = true
       @input = []
       @output = []

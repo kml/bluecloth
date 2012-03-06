@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BlueCloth, 'Markdown processing' do
 
   extend SampleLoader
-  
+
   it "should render HTML without trailing newline" do
     markdown('Foo').should == '<p>Foo</p>'
   end
@@ -17,7 +17,7 @@ describe BlueCloth, 'Markdown processing' do
     load_samples('all', 'code', 'titles', 'emphasis', 'links', 'lists') do |sample|
       it(sample.comment) { sample.should render }
     end
-    
+
     load_samples('failing') do |sample|
       it(sample.comment) { pending; sample.should render }
     end
@@ -40,11 +40,11 @@ describe BlueCloth, 'Markdown processing' do
       1@111.ll
     ]
     # I can't see a way to handle IDNs clearly yet, so these will have to wait.
-    #	info@öko.de
-    #	jemand@büro.de
-    #	irgendwo-interreßant@dÅgta.se
+    #  info@öko.de
+    #  jemand@büro.de
+    #  irgendwo-interreßant@dÅgta.se
     #]
-    
+
     emails.each do |email|
       rval = markdown "<#{email}>"
 
@@ -53,13 +53,13 @@ describe BlueCloth, 'Markdown processing' do
       decode(match[1]).should == "mailto:#{email}"
     end
   end
-  
+
   protected
-    
+
     def render
       SampleMatcher.new
     end
-    
+
     def decode( str )
       str.gsub(/&#(x[a-f0-9]+|\d{3});/i) do |match|
         code = $1
@@ -74,20 +74,20 @@ describe BlueCloth, 'Markdown processing' do
         end
       end
     end
-    
+
 end
 
 class SampleMatcher
   # def initialize(expected)
   #   @expected = expected
   # end
-  
+
   def matches?(sample)
     @sample = sample
     @result = BlueCloth.new(@sample.input).to_html
     @result.eql?(@sample.output)
   end
-  
+
   def failure_message
     "%s (line %d):\n<<< input:\n%s\n--- expected:\n%s\n>>> actual:\n%s\n===" % [
       @sample.comment, @sample.line,
@@ -96,7 +96,7 @@ class SampleMatcher
       @result
     ]
   end
-  
+
   # def negative_failure_message
   #   "expected #{@target.inspect} not to be in Zone #{@expected}"
   # end
