@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module BlueCloth::Transform
 
   # Apply Markdown span transforms to a copy of the specified +str+ with the

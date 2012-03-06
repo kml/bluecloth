@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module BlueCloth::Transform
 
   # Link defs are in the form: ^[id]: url "optional title"

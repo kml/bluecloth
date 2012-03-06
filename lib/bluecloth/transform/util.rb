@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module BlueCloth::Transform
 
   ### Escape any markdown characters in a copy of the given +str+ and return

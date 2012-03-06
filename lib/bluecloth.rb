@@ -1,3 +1,4 @@
+# encoding: utf-8
 #
 # Bluecloth is a Ruby implementation of Markdown, a text-to-HTML conversion
 # tool.

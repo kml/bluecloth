@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module BlueCloth::Transform
 
   # Do block-level transforms on a copy of +str+ using the specified render
