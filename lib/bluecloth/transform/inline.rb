@@ -115,7 +115,7 @@ module BlueCloth::Transform
       )?        # title is optional
       \)
     )
-    }xs #"
+    }xm #"
 
   # Reference-style images
   ReferenceImageRegexp = %r{
@@ -125,7 +125,7 @@ module BlueCloth::Transform
       (?:\n[ ]*)?    # One optional newline + spaces
       \[ (.*?) \]    # id = $3
     )
-    }xs
+    }xm
 
   # Turn image markup into image tags.
   def transform_images( str, rs )
